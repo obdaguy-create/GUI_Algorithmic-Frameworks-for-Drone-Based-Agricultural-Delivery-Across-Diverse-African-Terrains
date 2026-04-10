@@ -1,0 +1,291 @@
+/* ── Reset & tokens ──────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #0b0f1a;
+  --surface:   #131929;
+  --card:      #1a2236;
+  --border:    #2a3a5c;
+  --accent:    #38bdf8;
+  --accent2:   #22c55e;
+  --warn:      #f59e0b;
+  --danger:    #ef4444;
+  --text:      #e2e8f0;
+  --muted:     #64748b;
+  --font-head: 'Courier New', monospace;
+  --font-body: 'Trebuchet MS', sans-serif;
+  --radius:    10px;
+  --shadow:    0 4px 24px rgba(0,0,0,0.5);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  min-height: 100vh;
+}
+
+/* ── Nav ─────────────────────────────────────────────────── */
+.nav {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  height: 56px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-brand {
+  font-family: var(--font-head);
+  font-size: 1.2rem;
+  color: var(--accent);
+  letter-spacing: 2px;
+  text-decoration: none;
+}
+.nav-brand span { color: var(--accent2); }
+.nav-links { display: flex; gap: 1.2rem; }
+.nav-link {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.88rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+  transition: color .2s, border-color .2s;
+}
+.nav-link:hover, .nav-link.active {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ── Page shell ──────────────────────────────────────────── */
+.page { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem; }
+.page-wide { max-width: 1280px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+/* ── Hero ────────────────────────────────────────────────── */
+.hero { text-align: center; padding: 2.5rem 0 2rem; }
+.hero h1 {
+  font-family: var(--font-head);
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
+  color: var(--accent);
+  letter-spacing: 3px;
+}
+.hero p { color: var(--muted); margin-top: .6rem; font-size: .95rem; }
+
+/* ── Cards ───────────────────────────────────────────────── */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.6rem;
+  box-shadow: var(--shadow);
+}
+.card + .card { margin-top: 1.4rem; }
+.card-title {
+  font-family: var(--font-head);
+  font-size: .8rem;
+  color: var(--accent);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: .6rem;
+}
+
+/* ── Form ────────────────────────────────────────────────── */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+@media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+
+.field { display: flex; flex-direction: column; gap: .4rem; }
+.field label {
+  font-size: .78rem;
+  color: var(--muted);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.field input, .field select, .field textarea {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  padding: .55rem .8rem;
+  font-size: .93rem;
+  font-family: var(--font-body);
+  outline: none;
+  transition: border-color .2s;
+}
+.field input:focus, .field select:focus, .field textarea:focus {
+  border-color: var(--accent);
+}
+.field textarea { resize: vertical; min-height: 70px; }
+
+.range-wrap { display: flex; align-items: center; gap: .8rem; }
+.range-wrap input[type=range] {
+  flex: 1;
+  accent-color: var(--accent);
+  padding: 0;
+  border: none;
+  background: none;
+}
+.range-val {
+  font-family: var(--font-head);
+  color: var(--accent);
+  min-width: 52px;
+  text-align: right;
+  font-size: .95rem;
+}
+
+/* ── Buttons ─────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .65rem 1.4rem;
+  border-radius: 7px;
+  border: none;
+  font-family: var(--font-head);
+  font-size: .85rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: opacity .15s, transform .1s;
+}
+.btn:active { transform: scale(.97); }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+.btn-primary   { background: var(--accent);  color: #0b0f1a; }
+.btn-success   { background: var(--accent2); color: #0b0f1a; }
+.btn-danger    { background: var(--danger);  color: #fff; }
+.btn-outline   {
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+.btn-sm { padding: .35rem .8rem; font-size: .78rem; }
+
+/* ── Status badges ───────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: .75rem;
+  font-family: var(--font-head);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.badge-idle       { background: #1e3a5f; color: var(--accent); }
+.badge-active     { background: #14532d; color: var(--accent2); }
+.badge-pending    { background: #422006; color: var(--warn); }
+.badge-dispatched { background: #1e3a5f; color: var(--accent); }
+.badge-completed  { background: #14532d; color: var(--accent2); }
+.badge-failed     { background: #450a0a; color: var(--danger); }
+
+/* ── Drone status cards ──────────────────────────────────── */
+.drone-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.4rem;
+}
+.drone-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+}
+.drone-card-name {
+  font-family: var(--font-head);
+  color: var(--accent);
+  font-size: .85rem;
+  letter-spacing: 2px;
+  margin-bottom: .6rem;
+}
+.battery-bar-bg {
+  height: 6px;
+  background: var(--border);
+  border-radius: 4px;
+  margin: .35rem 0 .5rem;
+}
+.battery-bar {
+  height: 6px;
+  border-radius: 4px;
+  transition: width .5s;
+}
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: .8rem;
+  color: var(--muted);
+  margin-top: .25rem;
+}
+.stat-row span { color: var(--text); }
+
+/* ── Request table ───────────────────────────────────────── */
+.req-table { width: 100%; border-collapse: collapse; font-size: .86rem; }
+.req-table th {
+  text-align: left;
+  padding: .5rem .8rem;
+  color: var(--muted);
+  font-family: var(--font-head);
+  font-size: .72rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border);
+}
+.req-table td {
+  padding: .55rem .8rem;
+  border-bottom: 1px solid #1e2d47;
+  vertical-align: middle;
+}
+.req-table tr:hover td { background: #1e293b; }
+
+/* ── Map wrapper ─────────────────────────────────────────── */
+.map-wrap {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  height: 420px;
+}
+
+/* ── Operator layout ─────────────────────────────────────── */
+.op-layout {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 1.4rem;
+  align-items: start;
+}
+@media (max-width: 900px) { .op-layout { grid-template-columns: 1fr; } }
+
+/* ── Alert / feedback ────────────────────────────────────── */
+.alert {
+  padding: .7rem 1rem;
+  border-radius: 7px;
+  font-size: .88rem;
+  margin-top: .8rem;
+}
+.alert-success { background: #14532d33; border: 1px solid var(--accent2); color: var(--accent2); }
+.alert-error   { background: #450a0a33; border: 1px solid var(--danger);  color: var(--danger); }
+.alert-info    { background: #1e3a5f33; border: 1px solid var(--accent);  color: var(--accent); }
+
+/* ── Spinner ─────────────────────────────────────────────── */
+@keyframes spin { to { transform: rotate(360deg); } }
+.spinner {
+  width: 18px; height: 18px;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+  display: inline-block;
+}
+
+/* ── Misc ────────────────────────────────────────────────── */
+.section-gap { margin-top: 1.6rem; }
+.text-muted  { color: var(--muted); font-size: .85rem; }
+.full-span   { grid-column: 1 / -1; }
+.flex-end    { display: flex; justify-content: flex-end; gap: .8rem; margin-top: 1.2rem; }
