@@ -5,14 +5,14 @@ A collection of all front end files used for the Project
 ## File layout (place all in your project folder)
 ```
 PROJECT/
-├── MAIN.py
-├── GUI.py
-├── AIRSIM_SIM.py        ← updated (altitude, weight, avoidance)
-├── API.py               ← NEW: FastAPI backend
-├── DB.py
-├── CONFIG.py
-├── UTILS.py
-├── DATA_FETCHER.py
+├── MAIN.py(FRONTEND REPO)
+├── GUI.py(FRONTEND REPO)              ← Can run independent of React ,used for visualization of Drone flight simulation Environment
+├── AIRSIM_SIM.py (BACKEND REPO)       ← updated (altitude, weight, avoidance)
+├── API.py (BACKEND REPO)              ← NEW: FastAPI backend
+├── DB.py (BACKEND REPO)
+├── CONFIG.py(BACKEND REPO)
+├── UTILS.py(BACKEND REPO)
+├── DATA_FETCHER.py(BACKEND REPO)
 └── frontend/            ← NEW: React dashboards
     ├── package.json
     ├── vite.config.js
